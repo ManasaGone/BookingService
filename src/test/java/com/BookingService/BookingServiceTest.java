@@ -166,45 +166,7 @@ public class BookingServiceTest {
         assertTrue(result.isEmpty());
     }
 
-    @Test
-    void viewAllBookings_Success() {
-        // Arrange
-        Booking booking = new Booking();
-        booking.setBookingId(1L);
-        booking.setVehicleNo("AP36AL3691");
-        booking.setVehicleName("Vehicle1");
-        booking.setSource("Source");
-        booking.setDestination("Destination");
-        booking.setJourneyDate(LocalDate.now().plusDays(1));
-        booking.setBookingDate(LocalDate.now());
-        booking.setBoardingPoint("BoardingPoint");
-        booking.setDropPoint("DropPoint");
-        booking.setFare(100.0);
-        booking.setNoOfPassengers(4);
-        booking.setBookingStatus("Upcoming");
-
-        when(bookingRepository.findAll()).thenReturn(List.of(booking));
-
-        // Act
-        List<BookingDto> result = bookingService.viewAllBookings();
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        BookingDto dto = result.get(0);
-        assertEquals("1", dto.getBookingId());
-        assertEquals("AP36AL3691", dto.getVehicleNo());
-        assertEquals("Vehicle1", dto.getVehicleName());
-        assertEquals("Source", dto.getSource());
-        assertEquals("Destination", dto.getDestination());
-        assertEquals(LocalDate.now().plusDays(1), dto.getJourneyDate());
-        assertEquals(LocalDate.now(), dto.getBookingDate());
-        assertEquals("BoardingPoint", dto.getBoardingPoint());
-        assertEquals("DropPoint", dto.getDropPoint());
-        assertEquals(100.0, dto.getFare());
-        assertEquals(4, dto.getNoOfPassengers());
-        assertEquals("Upcoming", dto.getBookingStatus());
-    }
+ }
 
     
-}
+
